@@ -6,18 +6,18 @@ const ThemeContext = React.createContext()
 
 export const useTheme = () => useContext(ThemeContext)
 
-const supportedThemes = ['light', 'dark']
+const supportedThemes = ['warning', 'dark']
 
-const validateTheme = (theme) => supportedThemes.includes(theme) ? theme : 'light'
+const validateTheme = (theme) => supportedThemes.includes(theme) ? theme : 'warning'
 
 
 export const ThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState(
-    validateTheme(localStorage.getItem(THEME_KEY)) || 'light'
+    validateTheme(localStorage.getItem(THEME_KEY)) || 'warning'
   )
 
   const toggleTheme = useCallback(() => {
-    const nextTheme = theme === 'light' ? 'dark' : 'light'
+    const nextTheme = theme === 'warning' ? 'dark' : 'warning'
     setTheme(nextTheme)
     localStorage.setItem(THEME_KEY, nextTheme)
   }, [theme])
